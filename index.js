@@ -7,14 +7,14 @@ const Discord = require('discord.js'), {readFileSync} = require('fs'),
 	  client = new Discord.Client(),
 	  config = JSON.parse(readFileSync("./config.json"));
 
-disconnectHandler = function(){
+var disconnectHandler = function(){
 	client.login(config.token)
 	.catch(err => {
 		client.emit('disconnect');
 	});
 }
 
-nop = function(){};
+var nop = function(){};
 
 /**
  * @param regexOrString: {RegExp/String}
@@ -31,7 +31,7 @@ String.prototype.match_safe = function(regexOrString){
 /**
  * @param message: Discord.Message
 */
-messageHandler = function(message){
+var messageHandler = function(message){
 	var msg = message.content,
 		msg_l = message.content.toLowerCase(),
 		args = message.content.split(" "),
